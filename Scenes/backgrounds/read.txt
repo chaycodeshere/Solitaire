@@ -1,4 +1,0 @@
-480x270
-
-(width formula: 7x48/cards +6x12/spaces +2x36/sides
-length is ratio'd to fit in with 1920x1080 classic ratio.)

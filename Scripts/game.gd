@@ -1,9 +1,11 @@
 extends Node2D
 
 var game_paused : bool
+var cards_ready : int #it should hit 52.
 
 func _ready():
 	game_paused = false
+	cards_ready = 0
 	$continuebuton.hide()
 	$restartbutton.hide()
 	$quitbutton.hide()
