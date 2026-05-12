@@ -1,3 +1,24 @@
-[gd_scene format=3 uid="uid://c72bhqepu2psc"]
+[gd_scene load_steps=4 format=3 uid="uid://c72bhqepu2psc"]
+
+[ext_resource type="Texture2D" uid="uid://c2sd63ac6sxhb" path="res://Sprites/backgrounds/background.jpg" id="1_5ln6e"]
+[ext_resource type="Texture2D" uid="uid://7nietuudje5s" path="res://Sprites/ui/solitairetitle.png" id="2_gxomd"]
+[ext_resource type="Texture2D" uid="uid://c7enqg2oi58ds" path="res://Sprites/ui/credits.png" id="3_lgr82"]
 
 [node name="Menu" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 2
+texture_repeat = 2
+texture = ExtResource("1_5ln6e")
+centered = false
+
+[node name="title" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(240, 45)
+texture = ExtResource("2_gxomd")
+
+[node name="credits" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(240, 245)
+texture = ExtResource("3_lgr82")
