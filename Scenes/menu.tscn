@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c72bhqepu2psc"]
+[gd_scene load_steps=7 format=3 uid="uid://c72bhqepu2psc"]
 
 [ext_resource type="Texture2D" uid="uid://c2sd63ac6sxhb" path="res://Sprites/backgrounds/background.jpg" id="1_5ln6e"]
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_y34ug"]
 [ext_resource type="Texture2D" uid="uid://7nietuudje5s" path="res://Sprites/ui/solitairetitle.png" id="2_gxomd"]
 [ext_resource type="Texture2D" uid="uid://c7enqg2oi58ds" path="res://Sprites/ui/credits.png" id="3_lgr82"]
+[ext_resource type="Texture2D" uid="uid://co2dkrveuracy" path="res://Sprites/ui/playbutton.png" id="4_6tr8w"]
+[ext_resource type="Texture2D" uid="uid://c6o4kblqtued" path="res://Sprites/ui/quitbuttonbig.png" id="5_gbq5y"]
 
 [node name="Menu" type="Node2D"]
+script = ExtResource("1_y34ug")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -22,3 +26,32 @@ texture = ExtResource("2_gxomd")
 texture_filter = 1
 position = Vector2(240, 245)
 texture = ExtResource("3_lgr82")
+
+[node name="playbutton" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 223.0
+offset_top = 103.0
+offset_right = 287.0
+offset_bottom = 151.0
+pivot_offset = Vector2(32, 24)
+
+[node name="Sprite2D" type="Sprite2D" parent="playbutton"]
+texture_filter = 1
+texture = ExtResource("4_6tr8w")
+centered = false
+
+[node name="quitbutton" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 223.0
+offset_top = 167.0
+offset_right = 287.0
+offset_bottom = 215.0
+pivot_offset = Vector2(32, 24)
+
+[node name="Sprite2D" type="Sprite2D" parent="quitbutton"]
+texture_filter = 1
+texture = ExtResource("5_gbq5y")
+centered = false
+
+[connection signal="pressed" from="playbutton" to="." method="_on_playbutton_pressed"]
+[connection signal="pressed" from="quitbutton" to="." method="_on_quitbutton_pressed"]
