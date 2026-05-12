@@ -11,12 +11,13 @@ script = ExtResource("1_vbfkc")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 2
+texture_filter = 1
 texture = ExtResource("1_gfav2")
 centered = false
 
 [node name="continuebuton" type="Button" parent="."]
 self_modulate = Color(1, 1, 1, 0)
+z_index = 100
 offset_left = 213.0
 offset_top = 39.0
 offset_right = 277.0
@@ -30,6 +31,7 @@ centered = false
 
 [node name="restartbutton" type="Button" parent="."]
 self_modulate = Color(1, 1, 1, 0)
+z_index = 100
 offset_left = 213.0
 offset_top = 111.0
 offset_right = 277.0
@@ -43,6 +45,7 @@ centered = false
 
 [node name="quitbutton" type="Button" parent="."]
 self_modulate = Color(1, 1, 1, 0)
+z_index = 100
 offset_left = 213.0
 offset_top = 183.0
 offset_right = 277.0
@@ -55,6 +58,7 @@ texture = ExtResource("4_h6hgd")
 centered = false
 
 [node name="pausedtext" type="Label" parent="."]
+z_index = 100
 texture_filter = 1
 offset_left = 200.0
 offset_right = 262.0

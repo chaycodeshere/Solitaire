@@ -3,17 +3,19 @@
 [ext_resource type="Texture2D" uid="uid://conldhdv8mbd2" path="res://Sprites/cards/1.2 Poker cards.png" id="1_7sh4j"]
 [ext_resource type="Script" path="res://Scripts/card.gd" id="1_x0qld"]
 
-[node name="card" type="StaticBody2D"]
+[node name="card" type="StaticBody2D" groups=["cardgroup"]]
+input_pickable = true
 script = ExtResource("1_x0qld")
+metadata/_edit_group_ = true
 
 [node name="actualface" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("1_7sh4j")
-centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 48, 64)
+region_filter_clip_enabled = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-0.0750022, -3.8147e-06)
+position = Vector2(-24, -32)
 scale = Vector2(0.994791, 1)
 polygon = PackedVector2Array(0, 3, 3, 0, 45, 0, 48, 3, 48, 62, 46, 64, 2, 64, 0, 62)
