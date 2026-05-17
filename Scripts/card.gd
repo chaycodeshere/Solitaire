@@ -9,6 +9,9 @@ var picker : int
 var picker_fixed : int
 var isrootcard : bool #checks if this card is the root of a column. I mean the lowest card.
 var checkers : bool
+@onready var backofcard : Sprite2D = $backofcard
+var mouseon : bool #if mouse is over the card
+var picked : bool #if card is currently picked
 
 
 func _ready():
@@ -16,6 +19,8 @@ func _ready():
 	checkers = false
 	await get_tree().create_timer(3).timeout
 	checkers = true
+	mouseon = false
+	picked = false
 
 func appointing_identity():
 	picker_fixed = picker - 1 #since first one in arrays and sheets is 0.
@@ -36,10 +41,33 @@ func appointing_identity():
 	print($actualface.region_rect)
 	cardidentity = chosenface[picker_fixed]
 
+func pickingup():
+	if Input.is_action_pressed("leftclick"):
+		if mouseon == true and Globals.ismousefull == false:
+			picked = true
+			scale = Vector2(1.25, 1.25)
+	if Input.is_action_just_released("leftclick"):
+		if mouseon == true:
+			picked = false
+			Globals.ismousefull = false
+			scale = Vector2(1, 1)
+
 func _physics_process(delta):
+	pickingup()
 	if get_parent().name == "game":
 		isrootcard = true
 	else :
 		isrootcard = false
 	if get_parent().is_in_group("cardgroup"):
 		z_index = get_parent().z_index + 1
+	if picked == true:
+		position = get_global_mouse_position()
+		Globals.ismousefull = true
+	while picked == true:
+		z_index = 80
+
+
+func _on_mouse_entered():
+	mouseon = true
+func _on_mouse_exited():
+	mouseon = false

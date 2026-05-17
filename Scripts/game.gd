@@ -4,6 +4,15 @@ var game_paused : bool
 var cards_ready : int #it should hit 52.
 var playingcard : PackedScene = preload("res://Scenes/card.tscn")
 var cardsarray : Array #array to contain cards
+var column1last #vars to indicate and assign lowest card in a column
+var column2last
+var column3last
+var column4last
+var column5last
+var column6last
+var column7last
+
+
 
 func _ready():
 	game_paused = false
@@ -46,7 +55,7 @@ func card_spawn():
 		var pcard = playingcard.instantiate()
 		pcard.picker = cards_ready + 1
 		pcard.appointing_identity()
-		pcard.global_position = Vector2(24, 24)
+		pcard.global_position = Vector2(25, 36)
 		cardsarray.append(pcard)
 		add_child(pcard)
 		cards_ready += 1
@@ -60,6 +69,7 @@ func card_locate():
 		cardsarray.erase(selected_card)
 		if dealt_card == 0: #column1
 			selected_card.global_position = Vector2(92, 49)
+			selected_card.backofcard.hide()
 			dealt_card += 1
 			print("yeh")
 		elif dealt_card == 1: #column2
@@ -67,6 +77,7 @@ func card_locate():
 			dealt_card += 1
 			var card3 = cardsarray.pick_random()
 			cardsarray.erase(card3)
+			card3.backofcard.hide()
 			card3.z_index = 2
 			print(card3.name)
 			card3.global_position = Vector2(152, 64)
@@ -82,6 +93,7 @@ func card_locate():
 			card5.z_index = 2
 			var card6 = cardsarray.pick_random()
 			cardsarray.erase(card6)
+			card6.backofcard.hide()
 			card6.z_index = 3
 			card5.global_position = Vector2(212, 64)
 			dealt_card += 1
@@ -99,6 +111,7 @@ func card_locate():
 			card9.z_index = 3
 			var card10 = cardsarray.pick_random()
 			cardsarray.erase(card10)
+			card10.backofcard.hide()
 			card10.z_index = 4
 			card8.global_position = Vector2(272, 64)
 			dealt_card += 1
@@ -121,6 +134,7 @@ func card_locate():
 			card14.z_index = 4
 			var card15 = cardsarray.pick_random()
 			cardsarray.erase(card15)
+			card15.backofcard.hide()
 			card15.z_index = 5
 			card12.global_position = Vector2(332, 64)
 			dealt_card += 1
@@ -148,6 +162,7 @@ func card_locate():
 			card20.z_index = 5
 			var card21 = cardsarray.pick_random()
 			cardsarray.erase(card21)
+			card21.backofcard.hide()
 			card21.z_index = 6
 			card17.global_position = Vector2(392, 64)
 			dealt_card += 1
@@ -180,6 +195,7 @@ func card_locate():
 			card27.z_index = 6
 			var card28 = cardsarray.pick_random()
 			cardsarray.erase(card28)
+			card28.backofcard.hide()
 			card28.z_index = 7
 			card23.global_position = Vector2(452, 64)
 			dealt_card += 1

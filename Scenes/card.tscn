@@ -10,12 +10,22 @@ metadata/_edit_group_ = true
 
 [node name="actualface" type="Sprite2D" parent="."]
 texture_filter = 1
+texture_repeat = 2
 texture = ExtResource("1_7sh4j")
 region_enabled = true
 region_rect = Rect2(0, 0, 48, 64)
 region_filter_clip_enabled = true
 
+[node name="backofcard" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_7sh4j")
+region_enabled = true
+region_rect = Rect2(48, 256, 48, 64)
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(-24, -32)
 scale = Vector2(0.994791, 1)
 polygon = PackedVector2Array(0, 3, 3, 0, 45, 0, 48, 3, 48, 62, 46, 64, 2, 64, 0, 62)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
