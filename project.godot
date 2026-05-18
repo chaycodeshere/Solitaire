@@ -43,6 +43,12 @@ rightclick={
 ]
 }
 
+[physics]
+
+common/physics_ticks_per_second=200
+
 [rendering]
 
 renderer/rendering_method="mobile"
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true
