@@ -8,17 +8,16 @@ var cardidentity : String
 var picker : int
 var picker_fixed : int
 var isrootcard : bool #checks if this card is the root of a column. I mean the lowest card.
-var checkers : bool
 @onready var backofcard : Sprite2D = $backofcard
 var mouseon : bool #if mouse is over the card
 var picked : bool #if card is currently picked
+var old_pos : Vector2 #a placeholder var to log and save old position in case to return there when needed
+var old_z : int # same thing for z index
 
 
 func _ready():
 	$actualface.show()
-	checkers = false
-	await get_tree().create_timer(3).timeout
-	checkers = true
+	await get_tree().create_timer(0.5).timeout
 	mouseon = false
 	picked = false
 
@@ -38,19 +37,29 @@ func appointing_identity():
 	else :
 		if picker == null:
 			$actualface.region_rect = Rect2(0, 0, 48, 64)
-	print($actualface.region_rect)
 	cardidentity = chosenface[picker_fixed]
 
+func set_old_pos_and_z_in_start():
+	old_pos = global_position
+	old_z = z_index
+	print(old_pos, old_z)
+
 func pickingup():
-	if Input.is_action_pressed("leftclick"):
-		if mouseon == true and Globals.ismousefull == false:
-			picked = true
-			scale = Vector2(1.25, 1.25)
-	if Input.is_action_just_released("leftclick"):
-		if mouseon == true:
-			picked = false
-			Globals.ismousefull = false
-			scale = Vector2(1, 1)
+	if Globals.gameready == true and Globals.game_paused == false:
+		if Input.is_action_pressed("leftclick"):
+			if mouseon == true and Globals.ismousefull == false:
+				picked = true
+				scale = Vector2(1.25, 1.25)
+				z_index = 25
+				print(z_index)
+		if Input.is_action_just_released("leftclick"):
+			if mouseon == true:
+				picked = false
+				Globals.ismousefull = false
+				scale = Vector2(1, 1)
+				z_index = old_z
+				print(z_index)
+				global_position = old_pos
 
 func _physics_process(delta):
 	pickingup()
@@ -58,13 +67,14 @@ func _physics_process(delta):
 		isrootcard = true
 	else :
 		isrootcard = false
+	
 	if get_parent().is_in_group("cardgroup"):
 		z_index = get_parent().z_index + 1
+		old_z = z_index
+	
 	if picked == true:
 		position = get_global_mouse_position()
 		Globals.ismousefull = true
-	while picked == true:
-		z_index = 80
 
 
 func _on_mouse_entered():
