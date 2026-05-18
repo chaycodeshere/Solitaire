@@ -20,6 +20,7 @@ func _ready():
 	await get_tree().create_timer(0.5).timeout
 	mouseon = false
 	picked = false
+	set_old_pos_and_z_in_start()
 
 func appointing_identity():
 	picker_fixed = picker - 1 #since first one in arrays and sheets is 0.
