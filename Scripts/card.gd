@@ -61,7 +61,8 @@ func pickingup():
 				print(z_index)
 				global_position = old_pos
 
-func _physics_process(delta):
+func _process(delta):
+	process_priority = z_index * -1
 	pickingup()
 	if get_parent().name == "game":
 		isrootcard = true
