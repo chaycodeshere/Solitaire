@@ -23,6 +23,7 @@ func _ready():
 	$pausedtext.hide()
 	card_spawn()
 	card_locate()
+	cardsarray.map(func(sidecards): sidecards.sidecardaffirmer())
 	Globals.gameready = true
 
 func _input(event):
@@ -228,3 +229,10 @@ func card_locate():
 			card28.global_position = Vector2(452, 139)
 			card28.set_old_pos_and_z_in_start()
 			dealt_card += 1
+	cardsarray.shuffle()
+	var scn : int = 0 #side card number. a quick var for while code under this to run.
+	while scn < 24:
+		cardsarray[scn].z_index = scn
+		cardsarray[scn].old_z = cardsarray[scn].z_index
+		scn += 1
+	cardsarray.map(func(cards): cards.set_old_pos_and_z_in_start())
